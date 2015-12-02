@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="jtlnsOxfordDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:jtlnsOxfordDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:g="using:WinRTXamlToolkit.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" >
+            <CaptureElement Name="ce" Width="300"></CaptureElement>
+            <Button Width="300" Click="Button_Click">
+                <TextBlock>Capture</TextBlock>
+            </Button>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock FontSize="16">Age</TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold" Name="tbAge" Margin="5,0,10,0">?</TextBlock>
+                <TextBlock FontSize="16">Gender</TextBlock>
+                <TextBlock FontSize="16" FontWeight="Bold" Name="tbGender" Margin="5,0,10,0">?</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <g:Gauge Name="gAnger" Value=".5" Width="150" Height="100" Unit="Anger" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+                <g:Gauge Name="gContempt" Value=".5" Width="150" Height="100" Unit="Contempt" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <g:Gauge Name="gDisgust" Value=".5" Width="150" Height="100" Unit="Disgust" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+                <g:Gauge Name="gFear" Value=".5" Width="150" Height="100" Unit="Fear" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <g:Gauge Name="gHappiness" Value=".5" Width="150" Height="100" Unit="Happiness" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+                <g:Gauge Name="gNeutral" Value=".5" Width="150" Height="100" Unit="Neutral" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <g:Gauge Name="gSadness" Value=".5" Width="150" Height="100" Unit="Sadness" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+                <g:Gauge Name="gSurprise" Value=".5" Width="150" Height="100" Unit="Surprise" Minimum="0" Maximum="1" ValueStringFormat="0.00"></g:Gauge>
+            </StackPanel>
+        </StackPanel>
+        <WebView Name="wv" Grid.Row="0" Grid.Column="1"></WebView>
+
+    </Grid>
+</Page>
