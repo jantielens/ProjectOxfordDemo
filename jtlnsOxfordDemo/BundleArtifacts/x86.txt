@@ -1,0 +1,2 @@
+MainPackage=C:\temp\ProjectOxfordDemo\jtlnsOxfordDemo\bin\x86\Debug\jtlnsOxfordDemo_1.0.0.0_x86_Debug.appx
+SymbolPackage=C:\temp\ProjectOxfordDemo\jtlnsOxfordDemo\AppPackages\jtlnsOxfordDemo_1.0.0.0_Debug_Test\jtlnsOxfordDemo_1.0.0.0_x86_Debug.appxsym

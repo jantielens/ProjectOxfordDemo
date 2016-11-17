@@ -41,7 +41,7 @@ namespace jtlnsOxfordDemo
         {
             mc = new MediaCapture();
             var cameras = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
-            var camera = cameras.First();
+            var camera = cameras[1];
             var settings = new MediaCaptureInitializationSettings() { VideoDeviceId = camera.Id };
             await mc.InitializeAsync(settings);
             ce.Source = mc;
@@ -60,6 +60,7 @@ namespace jtlnsOxfordDemo
             var detectedEmotions = await OxfordEmo.RecognizeAsync(ms2);
             if (detectedEmotions != null && detectedEmotions.Length > 0)
             {
+                
                 var Face = detectedEmotions[0];
                 var s = Face.Scores;
                 gAnger.Value = s.Anger;
@@ -72,16 +73,16 @@ namespace jtlnsOxfordDemo
                 gSurprise.Value = s.Surprise;
             }
 
-            var detectedFaces = await OxfordFace.DetectAsync(ms, false, true, true, false);
+            var detectedFaces = await OxfordFace.DetectAsync(ms, true, true, new List<FaceAttributeType>() { FaceAttributeType.Age, FaceAttributeType.Gender });
             if (detectedFaces.Length > 0 && detectedEmotions.Length > 0)
             {
-                tbAge.Text = detectedFaces[0].Attributes.Age.ToString();
-                tbGender.Text = detectedFaces[0].Attributes.Gender;
+                tbAge.Text = detectedFaces[0].FaceAttributes.Age.ToString();
+                tbGender.Text = detectedFaces[0].FaceAttributes.Gender;
 
-                if (detectedFaces[0].Attributes.Gender == "female")
+                if (detectedFaces[0].FaceAttributes.Gender == "female")
                 {
-                    if (detectedFaces[0].Attributes.Age < 25)
-                        wv.Navigate(new Uri("https://www.jbc.be/nl/k3-zoekt-k3?utm_source=websitestudio100&utm_medium=banner&utm_term=k3%20kleedje&utm_content=iconisch%20k3%20jurkje&utm_campaign=studio100k33"));
+                    if (detectedFaces[0].FaceAttributes.Age < 25)
+                        wv.Navigate(new Uri("http://studio100.be/k3"));
                     else
                         wv.Navigate(new Uri("http://www.amazon.com/Girls-Think-Everything-Ingenious-Inventions/dp/0618195637/ref=sr_1_2?ie=UTF8&qid=1448372694&sr=8-2&keywords=female+scientist"));
                 }
